@@ -1,0 +1,102 @@
+                                          DFS
+                                          ===
+
+    Introduction
+    ============
+    
+    DFS is a simple command line utility for creating and reading DFS disc images as
+    used by many BBC emulators. If you don't know anything about these try looking at
+    the sites http://8bs.com and http://www.nvg.ntnu.no/bbc/index.php3 for more 
+    information.
+    
+    I created this utility as I wanted something that would be simple to include in
+    scripts and make files. If you want something with a nicer user interface there 
+    are plenty of other pieces of software available.
+    
+    Currently DFS only creates *standard* (i.e. not Watford) single-sided DFS images.
+    
+    INF Files
+    =========
+    
+    BBC DFS (and ADFS) files contain some file attribute such as load and execution 
+    addresses which are not contained within the file and which cannot easily be 
+    maintained in non BBC filing-systems. For more information on inf files see
+    http://www.nvg.ntnu.no/bbc/std-format.php3
+    
+    Usage
+    =====
+    
+    (this is the message printed by `dfs help`)
+    
+        Usage: dfs <command> [<options>] <image> [<files to add>]
+        
+        Command is one of:
+        help                   print this message
+        info                   catalogue disc
+        read                   read file(s)
+        add                    add file(s)
+        form                   format i.e. create new image
+        version                print version information and exit
+        
+        Info options:
+        -w <wildcard>          see read
+        
+        Read options:
+        -w <wildcard>          *info type wildcards (you'll need to put them
+                                in single quotes to stop expansion) or filename
+        -d <dir>               Dump to specified directory
+        -i                     Create .inf files
+        
+        Form options:
+        -40                    Create a 40 track disc
+        -80                    Create an 80 track disc (default)
+        
+        Add options:    For add operation <image> is followed by a list of files
+                        to add. The files can either be files or their associated .inf
+                        files. i.e. *.inf. If an inf file is specified will, look for
+                        a file without the .inf extension and vice versa.
+        -l                     Load address - in hex i.e. 000E00 overrides inf file
+        -e                     Exec address - ditto -
+        -f                     BBC file name - overrides inf file
+        -k                     File is locked - overrides inf
+        -u                     File is unlocked - overrides inf
+                        You must either supply a .inf file with a filename in it or
+                        pass the filename parameter
+                        Be careful adding names, very little filename checking is done
+                        and corrupt discs may be produced. This is so in the hope that
+                        it might be of help in creating "copy protected" discs???
+                        and its late at night and I just want it to work now...
+ 
+    Examples
+    ========
+
+    1. Create a disc image of a set of files in a directory
+    -------------------------------------------------------
+    
+    Suppose a directory ./x contains the files a, a.inf, b, b.inf, c, c.inf....
+    To create a dfs image 'x.img' containing these files do:
+    
+      > dfs form x.img
+      > dfs add x.img x/*.inf
+      
+    The first line creates the disc image, the second line will add each inf file to
+    the image. (When you attempt to add a .inf file to an image dfs will actually add
+    the file without the .inf extension, using the .inf for the attributes
+    
+    2. Add a regular file to a disc, specifying load and execute addresses
+    ----------------------------------------------------------------------
+    
+    Suppose you now wish to add a file readme.txt to the image created above and call
+    it "README" and set its load and execute addresses to standard "text file" addresses:
+    
+       > dfs add -l 0x000000 -e 0xFFFFFF -f README -u x.img readme.txt
+       
+    BUGS
+    ====
+    
+    Contact me at dom-dfs@brahms.demon.co.uk with any bug reports or feature requests.
+    
+    Cheers
+    
+    Dom
+    

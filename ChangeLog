@@ -1,0 +1,6 @@
+2005-07-14	Dominic Beesley	<dom-dfs@brahms.demon.co.uk>
+
+	* main.c Added code to turn off filename translation in RISC OS
+
+	* updated autoconf files
+

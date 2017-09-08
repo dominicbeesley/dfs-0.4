@@ -1,0 +1,46 @@
+
+Installation on RISC OS
+=======================
+
+I would suggest one of the following methods of compilation:
+
+- use gccsdk, follow the instructions in INSTALL excepting that the scripts
+  ~/env/ro-make, ~/env/ro-config should be used. Copy dfs,ffe to the library
+  directory of your RISC OS machine (try $.!BOOT.Library)
+
+- download the pre-build package and copy the dfs file in it as above
+
+- try and compile with Castle C/C++, this has not been tried
+
+Limitations
+===========
+
+1. Wildcards
+------------
+The RISC OS version does not support wildcards for adding files. (Unless you use bash).
+
+To perform example 1 from the DOCUMENTATION file you will need to do something like:
+
+Set Alias$DFSaddinf If "%1" RIGHT 4 = "/inf" Then dfs add %0 %1
+
+Repeat "DFSaddinf x/img" -files x
+
+2. Filename lengths
+-------------------
+Generated filename lengths may be too long for some older ADFS like filesystems. 
+
+If there is sufficient interest in providing a work around (any suggestions) then
+contact me and I'll have a look
+
+3. Use RISC OS load/exec addresses
+----------------------------------
+It should be possible to provide some extra switches for use with RISC OS that will
+allow the use of the load/exec fields provided by RISC OS. Again please contact me
+if you feel this would be useful
+
+
+dom-dfs@brahms.demon.co.uk
+
+Cheers
+
+Dom
