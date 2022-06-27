@@ -108,12 +108,12 @@ union dfs_disc *dfs_open(const char *filename) {
 		goto err;
 	}*/
 	sectors = DFS_SECTORCOUNT(ret);
-	if (sectors != 400 && sectors != 800) {
+/*	if (sectors != 400 && sectors != 800) {
 		fprintf(stderr, "unrecognised format %d sectors\n", sectors);
 		dfs_errno = EDFS_FORMAT;
 		goto err;
 	}
-	
+*/	
 	if (DFS_CATCOUNT(ret) > 31) {
 		fprintf(stderr, "too many files in catalog %d\n", DFS_CATCOUNT(ret));
 		dfs_errno = EDFS_FORMAT;
