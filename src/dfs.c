@@ -458,6 +458,7 @@ int dfs_addcatent(
 		dfs_getname(dfs, i, cmpname);
 		if (!strncmp(realname, cmpname, 9)) {
 			dfs_errno = EDFS_DUPLICATE;
+			fprintf(stderr, "duplicate filename: %.9s\n", realname);
 			return -1;
 		}
 	}	
