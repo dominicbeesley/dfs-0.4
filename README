@@ -1,5 +1,9 @@
 Here is a simple utility for creating DFS disc images for use with
 BBC Micro/Master emulators.
 
-Build the programs following the instructions in INSTALL.
+To build the programs either:
+ - download a release and follow the instructions in INSTALL
+ - clone this repository and run autoreconf --install followed by the instructions in INSTALL
+
+
 
