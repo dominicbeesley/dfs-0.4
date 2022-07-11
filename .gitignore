@@ -42,6 +42,7 @@ install-sh
 Makefile
 src/Makefile
 include/Makefile
+config.h
 
 .deps
 
