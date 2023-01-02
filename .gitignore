@@ -49,3 +49,4 @@ config.h
 stamp-h1
 *~
 *.bak
+src/dfs
