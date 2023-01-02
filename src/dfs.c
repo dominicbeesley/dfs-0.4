@@ -505,7 +505,7 @@ int dfs_opt4(union dfs_disc *dfs, int opt4)
 
 int dfs_title(union dfs_disc *dfs, const char *title)
 {
-	char buf[12];
+	char buf[13];
 	snprintf(buf, 12, "%-12.12s", title);
 	memcpy(dfs->header.sector0.disc_name_start, buf, 8);
 	memcpy(dfs->header.sector1.disc_name_end, buf + 8, 4);
