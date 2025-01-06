@@ -10,6 +10,12 @@ unlimited permission to copy, distribute and modify it.
 Basic Installation
 ==================
 
+When cloning from GitHub you will need run the command
+
+$ autoreconf --install 
+
+the before following the ./configure instructions below
+
 These are generic installation instructions.
 
    The `configure' shell script attempts to guess correct values for
